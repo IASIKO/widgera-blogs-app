@@ -14,7 +14,7 @@ export default function BlogCard({
         <h2 className="text-xl font-semibold text-indigo-600 mb-2">{title}</h2>
         <p className="text-gray-700 mb-4">{content.slice(0, 30)}...</p>
         <Link href={`/blog/${id}`}>
-          <Button>Read More</Button>
+          <Button type="button">Read More</Button>
         </Link>
       </div>
     </div>
