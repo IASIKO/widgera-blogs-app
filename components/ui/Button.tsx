@@ -3,6 +3,8 @@ interface ButtonProps {
   className?: string;
   type: "submit" | "button";
   isLoading?: boolean;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  disabled?: boolean
 }
 
 export default function Button({
@@ -10,11 +12,15 @@ export default function Button({
   className,
   type,
   isLoading,
+  onClick,
+  disabled
 }: ButtonProps) {
   return (
     <button
       className={`${className} rounded-md p-2 px-4 bg-purple-500 text-white flex items-center justify-center`}
       type={type}
+      onClick={onClick}
+      disabled={disabled}
     >
       {isLoading ? (
         <div
