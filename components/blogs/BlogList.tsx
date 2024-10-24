@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
 import Pagination from "../ui/Pagination";
 import Loader from "../ui/Loader";
+import { ListX } from "lucide-react";
 
 interface BlogListProps {
   blogs: Blog[];
@@ -32,28 +33,37 @@ export default function BlogList({ blogs }: BlogListProps) {
   const totalPages = Math.ceil(totalBlogs / BLOGS_PER_PAGE);
 
   return (
-    <>
-      {blogsData.length ? (
-        <div className="container mx-auto px-4 py-8">
-          <div className="h-[80vh]">
-            <h1 className="text-3xl font-bold text-center mb-8 text-purple-500">
-              Blog List
-            </h1>
-            <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {blogsData.map((blog) => (
-                <BlogCard blog={blog} key={blog.id} />
-              ))}
-            </div>
+    <div className="container mx-auto px-4 py-8">
+      <div className="xl:h-[80vh]">
+        {blogs.length ? (
+          <>
+            {blogsData.length ? (
+              <>
+                <h1 className="text-3xl font-bold text-center mb-8 text-purple-500">
+                  Blog List
+                </h1>
+                <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                  {blogsData.map((blog) => (
+                    <BlogCard blog={blog} key={blog.id} />
+                  ))}
+                </div>
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={(page) => setCurrentPage(page)}
+                />
+              </>
+            ) : (
+              <Loader />
+            )}
+          </>
+        ) : (
+          <div className="text-3xl text-pink-600 font-bold text-center h-full flex flex-col items-center justify-center">
+            <ListX size={45} />
+            Blog list is empty
           </div>
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={(page) => setCurrentPage(page)}
-          />
-        </div>
-      ) : (
-        <Loader />
-      )}
-    </>
+        )}
+      </div>
+    </div>
   );
 }

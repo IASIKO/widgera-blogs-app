@@ -4,7 +4,7 @@ interface ButtonProps {
   type: "submit" | "button";
   isLoading?: boolean;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  disabled?: boolean
+  disabled?: boolean;
 }
 
 export default function Button({
@@ -13,11 +13,11 @@ export default function Button({
   type,
   isLoading,
   onClick,
-  disabled
+  disabled,
 }: ButtonProps) {
   return (
     <button
-      className={`${className} rounded-md p-2 px-4 bg-purple-500 text-white flex items-center justify-center`}
+      className={`${className} rounded-md p-2 px-4 bg-purple-500 text-white flex items-center justify-center hover:bg-purple-600 duration-300`}
       type={type}
       onClick={onClick}
       disabled={disabled}

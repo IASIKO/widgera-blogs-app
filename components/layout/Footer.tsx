@@ -30,7 +30,7 @@ export default function Footer() {
         <div>
           <p className="text-sm">Follow us:</p>
           <div className="flex justify-center md:justify-end space-x-4 mt-2">
-            {["Facebook", "Twitter", "Instagram"].map((platform) => (
+            {["Facebook", "X", "Instagram"].map((platform) => (
               <span
                 key={platform}
                 className="hover:text-gray-300 transition-colors cursor-pointer"
