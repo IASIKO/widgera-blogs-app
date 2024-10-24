@@ -1,8 +1,8 @@
 import fs from "fs/promises";
 import { filePath } from "@/lib/constants";
 import BlogPostContent from "@/components/blogs/blogPost/BlogPostContent";
-import BlogPostNotFound from "@/components/blogs/blogPost/BlogPostNotFound";
 import { fetchBlogById } from "@/lib/actions/blog-actions";
+import { notFound } from "next/navigation";
 
 interface BlogPostPageProps {
   params: {
@@ -36,7 +36,7 @@ export default async function BlogPostPage({
   const blog = await fetchBlogById(id);
 
   if (!blog) {
-    return <BlogPostNotFound />;
+    notFound();
   }
 
   return <BlogPostContent blog={blog} />;
