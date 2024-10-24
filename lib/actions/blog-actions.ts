@@ -23,18 +23,18 @@ export async function fetchBlogById(id: string) {
 export async function createBlog(data: BlogFormInputs) {
   const newBlog = { id: Date.now(), ...data };
 
-  try {
-    const response = await fetch("http://localhost:3000/api/create-blog", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newBlog),
-    });
+  const response = await fetch("http://localhost:3000/api/create-blog", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(newBlog),
+  });
 
-    if (response.ok) {
-      return { success: true, message: "Blog post created successfully!" };
-    }
-  } catch (error) {
-    console.error(error);
+  if (response.status === 201) {
+    return {
+      success: true,
+      message: "Blog post created successfully!",
+    };
+  } else {
     return {
       success: false,
       message: "Failed to create blog post.",

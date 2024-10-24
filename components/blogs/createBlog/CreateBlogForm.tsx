@@ -13,7 +13,7 @@ export default function CreateBlogForm() {
   const {
     register,
     handleSubmit,
-    setValue,
+    reset,
     formState: { errors },
   } = useForm<BlogFormInputs>({
     resolver: zodResolver(blogSchema),
@@ -28,14 +28,13 @@ export default function CreateBlogForm() {
   const onSubmit = async (data: BlogFormInputs) => {
     const response = await createBlog(data);
 
-    if (response?.success) {
-      setValue("title", "");
-      setValue("content", "");
+    if (response.success === true) {
+      reset();
       toast.success(response.message);
       router.push("/");
       router.refresh();
     } else {
-      toast.error(response?.message || "An unexpected error occurred.");
+      toast.error(response.message);
     }
   };
 
