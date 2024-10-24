@@ -34,11 +34,11 @@ export default function BlogList({ blogs }: BlogListProps) {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="xl:h-[80vh]">
-        {blogs.length ? (
-          <>
-            {blogsData.length ? (
-              <>
+      {blogs.length ? (
+        <>
+          {blogsData.length ? (
+            <div className="flex flex-col justify-between">
+              <div className="xl:h-[80vh]">
                 <h1 className="text-3xl font-bold text-center mb-8 text-purple-500">
                   Blog List
                 </h1>
@@ -47,23 +47,23 @@ export default function BlogList({ blogs }: BlogListProps) {
                     <BlogCard blog={blog} key={blog.id} />
                   ))}
                 </div>
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  onPageChange={(page) => setCurrentPage(page)}
-                />
-              </>
-            ) : (
-              <Loader />
-            )}
-          </>
-        ) : (
-          <div className="text-3xl text-pink-600 font-bold text-center h-full flex flex-col items-center justify-center">
-            <ListX size={45} />
-            Blog list is empty
-          </div>
-        )}
-      </div>
+              </div>
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={(page) => setCurrentPage(page)}
+              />
+            </div>
+          ) : (
+            <Loader />
+          )}
+        </>
+      ) : (
+        <div className="text-3xl text-pink-600 font-bold text-center h-full flex flex-col items-center justify-center">
+          <ListX size={45} />
+          Blog list is empty
+        </div>
+      )}
     </div>
   );
 }

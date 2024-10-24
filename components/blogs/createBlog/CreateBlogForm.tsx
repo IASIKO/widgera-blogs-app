@@ -31,7 +31,7 @@ export default function CreateBlogForm() {
     setIsLoading(true);
     const response = await createBlog(data);
 
-    if (response.success === true) {
+    if (response.success) {
       reset();
       toast.success(response.message);
       router.push("/");
