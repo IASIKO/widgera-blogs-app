@@ -70,7 +70,7 @@ export default function CreateBlogForm() {
         {errors.content && <ErrorMessage error={errors.content} />}
         <Button
           type="submit"
-          className="w-full py-3 mt-4 text-white bg-purple-600 rounded-md hover:bg-purple-700 transition duration-200"
+          className="w-full py-3 mt-4"
           isLoading={isLoading}
         >
           Create Blog
