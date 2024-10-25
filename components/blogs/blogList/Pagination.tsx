@@ -1,5 +1,5 @@
+import Button from "@/components/ui/Button";
 import { ArrowBigLeft, ArrowBigRight } from "lucide-react";
-import Button from "./Button";
 
 interface PaginationProps {
   currentPage: number;

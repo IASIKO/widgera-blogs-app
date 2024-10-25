@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import BlogCard from "./BlogCard";
-import Pagination from "../ui/Pagination";
-import Loader from "../ui/Loader";
 import { ListX } from "lucide-react";
+import BlogCard from "./BlogCard";
+import Pagination from "./Pagination";
+import Loader from "@/components/ui/Loader";
 
 interface BlogListProps {
   blogs: Blog[];

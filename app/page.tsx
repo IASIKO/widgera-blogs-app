@@ -1,4 +1,4 @@
-import BlogList from "@/components/blogs/BlogList";
+import BlogList from "@/components/blogs/blogList/BlogList";
 import { fetchBlogs } from "@/lib/actions/blog-actions";
 
 export default async function HomePage() {
